@@ -12,7 +12,6 @@ async function bootstrap() {
   });
 
   app.useGlobalFilters(new AllExceptionsFilter());
-
   await app.listen(Number(process.env.API_PORT));
 }
 bootstrap();

@@ -64,7 +64,7 @@
       "ts"
     ],
     "rootDir": ".",
-    "testRegex": ".spec.ts$",
+    "testRegex": ".(spec|e2e).ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },

@@ -13,8 +13,8 @@ export class MovieController {
   client: ClientProxy;
 
   @Get()
-  getMovies(): Observable<string[]> {
-    return this.client.send<string[]>(GET_MOVIES, 'get list movies');
+  getMovies(): Observable<Movie[]> {
+    return this.client.send<Movie[]>(GET_MOVIES, 'get list movies');
   }
 
   @Get('/:id')

@@ -30,7 +30,7 @@ export class BaseService<T extends Model> implements IBaseService<T> {
     });
 
     if (!movie) {
-      throw new RpcException(`No movie found with id ${id}`);
+      throw new RpcException(`No entity found with id ${id}`);
     }
 
     return movie;

@@ -9,7 +9,7 @@ import { MovieModule } from '../src/movie/movie.module';
 import { MovieController } from '../src/movie/movie.controller';
 
 require('dotenv').config();
-describe('Movie Controller', () => {
+describe('Movie end to end tests', () => {
   let moviesController: MovieController;
   let movieService: MovieService;
   let movieRepository: Repository<Movie>;
