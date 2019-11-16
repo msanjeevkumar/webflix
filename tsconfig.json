@@ -10,7 +10,10 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "paths": {}
+    "paths": {
+      "@webflix/common": ["libs/common/src"],
+      "@webflix/common/*": ["libs/common/src/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
