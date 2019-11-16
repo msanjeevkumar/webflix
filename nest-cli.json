@@ -1,22 +1,13 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/webflix/src",
+  "sourceRoot": "apps/api/src",
   "monorepo": true,
-  "root": "apps/webflix",
+  "root": "apps/api",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "apps/webflix/tsconfig.app.json"
+    "tsConfigPath": "apps/api/tsconfig.app.json"
   },
   "projects": {
-    "webflix": {
-      "type": "application",
-      "root": "apps/webflix",
-      "entryFile": "main",
-      "sourceRoot": "apps/webflix/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/webflix/tsconfig.app.json"
-      }
-    },
     "movies": {
       "type": "application",
       "root": "apps/movies",
