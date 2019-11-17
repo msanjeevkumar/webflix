@@ -5,12 +5,10 @@ import { Transport } from '@nestjs/microservices';
 // tslint:disable-next-line: no-var-requires
 require('dotenv').config();
 async function bootstrap() {
-  // tslint:disable-next-line: no-console
-  console.log(process.env.MOVIE_DB_URL + '----------------------------');
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.REDIS,
     options: {
-      port: Number(process.env.MOVIE_PORT),
+      url: 'redis://localhost:6379',
     },
   });
 

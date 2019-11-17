@@ -8,13 +8,16 @@ import { CreateMovieDto } from './CreateMovie.dto';
 @Controller('movies')
 export class MovieController {
   @Client({
-    transport: Transport.TCP,
+    transport: Transport.REDIS,
+    options: {
+      url: 'redis://localhost:6379',
+    },
   })
   client: ClientProxy;
 
   @Get()
-  getMovies(): Observable<string[]> {
-    return this.client.send<string[]>(GET_MOVIES, 'get list movies');
+  getMovies(): Observable<Movie[]> {
+    return this.client.send<Movie[]>(GET_MOVIES, 'get list movies');
   }
 
   @Get('/:id')

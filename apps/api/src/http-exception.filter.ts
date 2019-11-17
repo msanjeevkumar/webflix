@@ -9,7 +9,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const request = ctx.getRequest();
 
     let exceptionObj = null;
-
+    console.log(exception);
     try {
       exceptionObj = JSON.parse(JSON.stringify(exception));
     } catch (e) {}
