@@ -7,7 +7,10 @@ import { Genre } from 'apps/genres/src/database/genre.entity';
 @Controller('genres')
 export class GenreController {
   @Client({
-    transport: Transport.TCP,
+    transport: Transport.REDIS,
+    options: {
+      url: 'redis://localhost:6379',
+    },
   })
   client: ClientProxy;
 

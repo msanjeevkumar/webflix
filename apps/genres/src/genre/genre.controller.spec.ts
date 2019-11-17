@@ -1,10 +1,11 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { Test, TestingModule } from '@nestjs/testing';
 import { GenreController } from './genre.controller';
 import { GenreService } from './genre.service';
 import { RpcException } from '@nestjs/microservices';
 import { genreRepository } from '../database/genres.providers';
-// tslint:disable-next-line: no-var-requires
-require('dotenv').config();
+
 describe('Genre Controller', () => {
   let genresController: GenreController;
   let genreService: GenreService;

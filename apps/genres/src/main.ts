@@ -6,9 +6,9 @@ import { Transport } from '@nestjs/microservices';
 require('dotenv').config();
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.REDIS,
     options: {
-      port: Number(process.env.GENRES_PORT),
+      url: 'redis://localhost:6379',
     },
   });
 
