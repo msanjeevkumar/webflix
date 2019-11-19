@@ -3,6 +3,7 @@ import { MessagePattern } from '@nestjs/microservices';
 import { GET_MOVIES, GET_MOVIE, DELETE_MOVIE, CREATE_MOVIE } from '@webflix/common/constants';
 import { Movie } from '../database/movie.entity';
 import { MovieService } from './movie.service';
+import { CreateMovieDto } from './CreateMovie.dto';
 
 export class MovieController {
   constructor(@Inject(MovieService) private readonly movieService: MovieService) {}
@@ -18,7 +19,7 @@ export class MovieController {
   }
 
   @MessagePattern(CREATE_MOVIE)
-  async insertMovie({ name, description, releaseDate, durationInMins, genres, rating }) {
+  async insertMovie({ name, description, releaseDate, durationInMins, genres, rating }: CreateMovieDto) {
     if (!genres) {
       genres = [];
     }

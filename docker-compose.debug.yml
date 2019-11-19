@@ -1,0 +1,33 @@
+version: "3"
+services:
+  redis_db:
+    image: redis
+    container_name: cache
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis_db
+
+  movieDb:
+    image: "postgres"
+    container_name: "movie_postgres"
+    environment:
+      - POSTGRES_USER=sanjeev
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=movies
+    ports:
+      - "54320:5432"
+    volumes:
+      - ~/postgres-movies:/var/lib/postgresql/data
+
+  genreDb:
+    image: "postgres"
+    container_name: "genre_postgres"
+    environment:
+      - POSTGRES_USER=sanjeev
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=genres
+    ports:
+      - "54321:5432"
+    volumes:
+      - ~/postgres-genres:/var/lib/postgresql/data

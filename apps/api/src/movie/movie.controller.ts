@@ -3,14 +3,14 @@ import { Client, Transport, ClientProxy } from '@nestjs/microservices';
 import { Observable, from } from 'rxjs';
 import { GET_MOVIES, GET_MOVIE, CREATE_MOVIE, DELETE_MOVIE } from '@webflix/common/constants';
 import { Movie } from 'apps/movies/src/database/movie.entity';
-import { CreateMovieDto } from './CreateMovie.dto';
+import { CreateMovieDto } from 'apps/movies/src/movie/CreateMovie.dto';
 
 @Controller('movies')
 export class MovieController {
   @Client({
     transport: Transport.REDIS,
     options: {
-      url: 'redis://localhost:6379',
+      url: process.env.REDIS_URL,
     },
   })
   client: ClientProxy;
