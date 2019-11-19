@@ -7,14 +7,7 @@ import { AllExceptionsFilter } from './http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.connectMicroservice({
-    transport: Transport.REDIS,
-    options: {
-      url: 'redis://localhost:6379',
-    },
-  });
-
   app.useGlobalFilters(new AllExceptionsFilter());
-  await app.listen(Number(process.env.API_PORT));
+  await app.listen(Number(process.env.PORT));
 }
 bootstrap();
