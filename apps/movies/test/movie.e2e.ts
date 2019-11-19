@@ -1,14 +1,15 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { RpcException } from '@nestjs/microservices';
-import * as sinon from 'sinon';
+import { Test } from '@nestjs/testing';
 import { MovieService } from '../src/movie/movie.service';
 import { Repository } from 'sequelize-typescript';
 import { Movie } from '../src/database/movie.entity';
 import { DatabaseModule } from '../src/database/database.module';
 import { MovieModule } from '../src/movie/movie.module';
 import { MovieController } from '../src/movie/movie.controller';
+import { MOVIE_REPOSITORY } from '@webflix/common/constants';
+import * as dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
+
 describe('Movie end to end tests', () => {
   let moviesController: MovieController;
   let movieService: MovieService;

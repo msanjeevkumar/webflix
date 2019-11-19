@@ -1,9 +1,10 @@
-import { NestFactory, HttpAdapterHost } from '@nestjs/core';
+import * as dotenv from 'dotenv';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Transport } from '@nestjs/microservices';
+import { Transport } from '@nestjs/common/enums/transport.enum';
 
-// tslint:disable-next-line: no-var-requires
-require('dotenv').config();
+dotenv.config();
+
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.REDIS,

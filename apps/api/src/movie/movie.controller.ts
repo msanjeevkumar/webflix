@@ -1,7 +1,7 @@
-import { Controller, Get, Param, Res, HttpStatus, Post, Body, Delete } from '@nestjs/common';
-import { Client, Transport, ClientProxy } from '@nestjs/microservices';
-import { Observable, from } from 'rxjs';
-import { GET_MOVIES, GET_MOVIE, CREATE_MOVIE, DELETE_MOVIE } from '@webflix/common/constants';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Client, ClientProxy, Transport } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
+import { CREATE_MOVIE, DELETE_MOVIE, GET_MOVIE, GET_MOVIES } from '@webflix/common/constants';
 import { Movie } from 'apps/movies/src/database/movie.entity';
 import { CreateMovieDto } from 'apps/movies/src/movie/CreateMovie.dto';
 

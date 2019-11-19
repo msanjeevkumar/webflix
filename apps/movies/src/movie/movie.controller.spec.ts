@@ -1,16 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MovieController } from './movie.controller';
 import { MovieService } from './movie.service';
-import { Repository } from 'sequelize-typescript';
-import { Movie } from '../database/movie.entity';
-import { DatabaseModule } from '../database/database.module';
-import { MovieModule } from './movie.module';
 import { RpcException } from '@nestjs/microservices';
-import * as sinon from 'sinon';
-import { CreateMovieDto } from 'apps/api/src/movie/CreateMovie.dto';
 import { movieRepository } from '../database/movies.providers';
+import { MOVIE_REPOSITORY } from '@webflix/common/constants';
+import * as dotenv from 'dotenv';
+import { CreateMovieDto } from './CreateMovie.dto';
 
-require('dotenv').config();
+dotenv.config();
+
 describe('Movie Controller', () => {
   let moviesController: MovieController;
   let movieService: MovieService;
@@ -73,7 +71,7 @@ describe('Movie Controller', () => {
   });
 
   it('should create movie in the db', async () => {
-    const movie = {
+    const movie: CreateMovieDto = {
       name: 'test-name1',
       description: 'test-description',
       releaseDate: new Date(),

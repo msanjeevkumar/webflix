@@ -9,18 +9,26 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const request = ctx.getRequest();
 
     let exceptionObj = null;
-    console.log(exception);
     try {
       exceptionObj = JSON.parse(JSON.stringify(exception));
     } catch (e) {}
 
     const { status, message } = exceptionObj;
 
-    response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-      message: message ? message : 'Internal server error',
-      timestamp: new Date().toISOString(),
-      path: request.url,
-    });
+    let responseJson = {};
+    if (typeof message === 'string') {
+      responseJson = {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message,
+        timestamp: new Date().toISOString(),
+        path: request.url,
+      };
+    } else {
+      responseJson = {
+        ...message,
+      };
+    }
+
+    response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(responseJson);
   }
 }

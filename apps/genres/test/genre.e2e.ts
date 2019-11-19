@@ -1,6 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { Test, TestingModule } from '@nestjs/testing';
-import { RpcException } from '@nestjs/microservices';
-import * as sinon from 'sinon';
 import { GenreService } from '../src/genre/genre.service';
 import { Repository } from 'sequelize-typescript';
 import { Genre } from '../src/database/genre.entity';
@@ -8,7 +8,6 @@ import { DatabaseModule } from '../src/database/database.module';
 import { GenreModule } from '../src/genre/genre.module';
 import { GenreController } from '../src/genre/genre.controller';
 
-require('dotenv').config();
 describe('Genre end to end tests', () => {
   let genresController: GenreController;
   let genreService: GenreService;
