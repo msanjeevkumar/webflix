@@ -3,7 +3,6 @@ import { MovieController } from './movie.controller';
 import { MovieService } from './movie.service';
 import { RpcException } from '@nestjs/microservices';
 import { movieRepository } from '../database/movies.providers';
-import { MOVIE_REPOSITORY } from '@webflix/common/constants';
 import * as dotenv from 'dotenv';
 import { CreateMovieDto } from './CreateMovie.dto';
 
