@@ -11,7 +11,10 @@ export class AllExceptionsFilter implements ExceptionFilter {
     let exceptionObj = null;
     try {
       exceptionObj = JSON.parse(JSON.stringify(exception));
-    } catch (e) {}
+    } catch (e) {
+      // tslint:disable-next-line: no-console
+      console.error(e);
+    }
 
     const { status, message } = exceptionObj;
 

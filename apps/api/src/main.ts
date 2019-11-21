@@ -7,6 +7,7 @@ import { AllExceptionsFilter } from './http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({ origin: '*' });
   app.useGlobalFilters(new AllExceptionsFilter());
   const options = new DocumentBuilder()
     .setTitle('Webflix')
@@ -14,9 +15,11 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('movies')
     .addTag('genres')
+    .setSchemes('https')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('swagger', app, document);
   await app.listen(Number(process.env.PORT));
 }
+
 bootstrap();
