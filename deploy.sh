@@ -1,8 +1,11 @@
-rm -rf node_modules
+set -e
+set -x
+npm run lint
 rm -rf dist
-#heroku login
-#heroku container:login
+nest build movies
+nest build genres
+nest build api
 heroku container:push movies genres web --recursive
-#heroku container:release movies
-#heroku container:release genres
-#heroku container:release web
+heroku container:release movies
+heroku container:release genres
+heroku container:release web
