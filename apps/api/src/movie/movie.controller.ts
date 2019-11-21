@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { CREATE_MOVIE, DELETE_MOVIE, GET_MOVIE, GET_MOVIES } from '@webflix/common/constants';
 import { Movie } from 'apps/movies/src/database/movie.entity';
 import { CreateMovieDto } from 'apps/movies/src/movie/CreateMovie.dto';
-import { ApiImplicitQuery, ApiUseTags } from '@nestjs/swagger';
+import { ApiUseTags, ApiImplicitParam } from '@nestjs/swagger';
 
 @Controller('movies')
 @ApiUseTags('movies')
@@ -23,13 +23,13 @@ export class MovieController {
   }
 
   @Get('/:id')
-  @ApiImplicitQuery({ name: 'id', type: 'string' })
+  @ApiImplicitParam({ name: 'id', type: 'number' })
   async getMovie(@Param('id') id) {
     return this.client.send<Movie>(GET_MOVIE, { id });
   }
 
   @Delete('/:id')
-  @ApiImplicitQuery({ name: 'id', type: 'string' })
+  @ApiImplicitParam({ name: 'id', type: 'number' })
   async deleteMovie(@Param('id') id) {
     return this.client.send<Movie>(DELETE_MOVIE, { id });
   }

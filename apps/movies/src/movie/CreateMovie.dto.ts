@@ -13,7 +13,10 @@ export class CreateMovieDto {
   })
   releaseDate: Date;
 
-  @ApiModelProperty()
+  @ApiModelProperty({
+    isArray: true,
+    type: 'number',
+  })
   genres: number[];
 
   @ApiModelProperty()

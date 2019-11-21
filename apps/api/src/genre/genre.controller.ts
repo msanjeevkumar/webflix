@@ -3,7 +3,7 @@ import { Client, Transport, ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import { GET_GENRES, GET_GENRE, DELETE_GENRE, CREATE_GENRE } from '@webflix/common/constants';
 import { Genre } from 'apps/genres/src/database/genre.entity';
-import { ApiImplicitQuery, ApiUseTags } from '@nestjs/swagger';
+import { ApiImplicitQuery, ApiUseTags, ApiImplicitParam } from '@nestjs/swagger';
 import { CreateGenreDto } from 'apps/genres/src/genre/CreateGenre.dto';
 
 @Controller('genres')
@@ -23,13 +23,13 @@ export class GenreController {
   }
 
   @Get('/:id')
-  @ApiImplicitQuery({ name: 'id', type: 'string' })
+  @ApiImplicitParam({ name: 'id', type: 'number' })
   async getGenre(@Param('id') id) {
     return this.client.send<Genre>(GET_GENRE, { id });
   }
 
   @Delete('/:id')
-  @ApiImplicitQuery({ name: 'id', type: 'string' })
+  @ApiImplicitParam({ name: 'id', type: 'number' })
   async deleteGenre(@Param('id') id) {
     return this.client.send<Genre>(DELETE_GENRE, { id });
   }
