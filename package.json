@@ -30,7 +30,7 @@
     "ghooks": "^2.0.4",
     "pg": "^7.12.1",
     "pretty-quick": "^2.0.1",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
